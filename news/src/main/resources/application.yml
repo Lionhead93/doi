@@ -8,8 +8,11 @@ spring:
   config:
     import: "optional:configserver:" # default : http://localhost:8888
 
+feign
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+

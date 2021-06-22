@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties("application")
 @Getter
 @Setter
-public class ApplicationConfiguration {
+public class ApplicationConfig {
 
     private String message;
 
