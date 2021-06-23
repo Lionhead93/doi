@@ -1,7 +1,11 @@
 server:
-  port: 8761
+  port: 8761 #discovery service port
+
+spring:
+  application:
+    name: discoveryservice
 
 eureka:
-  client:
+  client: #client relate
     fetch-registry: false
     register-with-eureka: false
