@@ -1,0 +1,27 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/users/**
+          filters:
+            - AddRequestHeader=user-request, user-request-header2
+            - AddResponseHeader=user-response, user-response-header2
+        - id: news-service
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/news/**
+          filters:
+            - AddRequestHeader=news-request, news-request-header2
+            - AddResponseHeader=news-response, news-response-header2
