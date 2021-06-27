@@ -13,3 +13,14 @@ services:
     hostname: bus
     volumes:
       - ./volumes/bus-rabbitmq:/var/lib/rabbitmq
+  news_db:
+    image: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/conf.d:/etc/mysql/conf.d
+      - ./db/initdb.d:/docker-entrypoint-initdb.d
+    env_file: .env
+    environment:
+      TZ: Asia/Seoul
+    restart: always
