@@ -17,7 +17,6 @@ public class ShowDataFetcher {
             new Show("Dead to Me", 2019),
             new Show("Orange is the New Black", 2013)
     );
-
     @DgsData(parentType = "Query", field = "shows")
     public List<Show> shows(@InputArgument String titleFilter) {
         if(titleFilter == null) {

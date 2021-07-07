@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.5.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id "com.netflix.dgs.codegen" version "5.0.2"
     id 'java'
 }
 
@@ -22,6 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:latest.release"))
     implementation "com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter"
+    implementation("com.netflix.graphql.dgs:graphql-dgs-extended-scalars")
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -30,4 +32,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+compileJava {
+    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_11
+}
+
+generateJava {
+    packageName = 'com.example.graphqlserver.graphqls' // The package name to use to generate sources
+    generateClient = true // Enable generating the type safe query API
 }
